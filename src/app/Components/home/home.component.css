@@ -2,8 +2,9 @@
     display: flex;
     margin-left:150px ;
 }
-h3{
-    color:red;    
+h3,h1{
+    color:red; 
+    text-decoration: underline;   
 }
 img{
     height:250px ;

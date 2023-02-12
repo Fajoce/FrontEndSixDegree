@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-enabled!:false;
+enabled!:true;
 @Input() opcion!: string;
 textoPadre!: string;
 
