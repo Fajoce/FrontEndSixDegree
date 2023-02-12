@@ -1,0 +1,73 @@
+<div class="title text-center">
+    <h3>{{titulo}}</h3>
+</div>
+<div class="container">
+    <mat-card>
+        <mat-card-subtitle>Users</mat-card-subtitle>
+       <form [formGroup]="forms" (ngSubmit)="AddEditUser()">
+        <mat-grid-list cols="2" rowHeight="80px">            
+            <mat-grid-tile [colspan]="1">
+                <mat-form-field appearance="outline" class="mat-form-field">
+                <mat-label>Usuario</mat-label>
+                <input  formControlName="userName" matInput autocomplete="off">               
+                </mat-form-field>
+            </mat-grid-tile >
+            <mat-grid-tile [colspan]="1">
+                <mat-form-field appearance="outline" class="mat-form-field">
+                <mat-label>Apellidos</mat-label>
+                <input formControlName="userLastName" matInput autocomplete="off">               
+               </mat-form-field>
+            </mat-grid-tile>
+        <mat-grid-tile [colspan]="1">
+            <mat-form-field appearance="fill">
+                <mat-label>Tipo usuario</mat-label>
+                <mat-select formControlName="typeOfUserId">
+                  <mat-option *ngFor="let item of types" [value]="item.value" >
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile> 
+            <mat-grid-tile [colspan]="1">
+                <mat-form-field appearance="outline" class="mat-form-field">
+                <mat-label>Dirección</mat-label>
+                <input formControlName="userAdress" matInput autocomplete="off">               
+               </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1">
+                <mat-form-field appearance="outline" class="mat-form-field">
+                <mat-label>Teléfono</mat-label>
+                <input formControlName="userTelephone" matInput autocomplete="off">               
+               </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1">
+                <mat-form-field appearance="outline" class="mat-form-field">
+                <mat-label>Email</mat-label>
+                <input formControlName="userEmail" matInput autocomplete="off">               
+               </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1">
+                <mat-form-field appearance="outline" class="mat-form-field">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" formControlName="password" matInput autocomplete="off">               
+               </mat-form-field>               
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1"> 
+                <mat-form-field appearance="fill">
+                    <mat-label>Seleccione fecha</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="2"> 
+              <button [disabled]="forms.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+            <button  mat-button color="primary" routerLink="/Usuarios">Regresar</button>
+            </mat-grid-tile> 
+            </mat-grid-list>   
+        </form>
+    </mat-card>
+</div>
+

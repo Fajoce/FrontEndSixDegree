@@ -1,0 +1,51 @@
+<div class="container">
+  <mat-form-field >
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="nombre" #input class="bg-white">
+  </mat-form-field>
+    <button routerLink="/AddUsers" mat-raised-button class="float-end mb-3">Crear</button>
+               <table mat-table [dataSource]="dataSource" class="mat-elevation-z10"> 
+   
+       <!--- Note that these columns can be defined in any order.
+             The actual rendered columns are set as a property on the row definition" -->
+     
+       <!-- User id -->
+       <ng-container matColumnDef="userId">
+         <th mat-header-cell *matHeaderCellDef> Id </th>
+         <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+       </ng-container>
+     
+       <!-- User Name -->
+       <ng-container matColumnDef="userName">
+         <th mat-header-cell *matHeaderCellDef> Nombre </th>
+         <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+       </ng-container>
+
+              <!-- User Last name -->
+       <ng-container matColumnDef="userLastName">
+        <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+        <td mat-cell *matCellDef="let element"> {{element.userLastName}} </td>
+      </ng-container>
+ 
+
+      <!--Actions -->  
+         <ng-container matColumnDef="acciones">
+           <th mat-header-cell *matHeaderCellDef> Acciones </th>
+           <td mat-cell *matCellDef="let element">
+          <mat-icon class="search" matTooltip="Ver" fontIcon="search" routerLink="/getUsuario/{{element.userId}}"></mat-icon>
+           <mat-icon routerLink="/editUser/{{element.userId}}" class="edit" matTooltip="Editar" fontIcon="edit"></mat-icon>
+               <mat-icon (click)="deleteUsers(element.userId)" class="delete" matTooltip="Borrar"fontIcon="delete"></mat-icon>
+           </td>
+          
+         </ng-container>
+      <!--<tr><button (click)="getInspectionById(element.id)"></button></tr>-->
+           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+   </table>
+   <mat-paginator [pageSizeOptions]="[5, 10, 20]" class="paginator mt-3 float-center"
+   showFirstLastButtons
+   aria-label="Select element of users">
+   </mat-paginator>
+   </div>
+   

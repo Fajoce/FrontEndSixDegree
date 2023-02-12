@@ -1,0 +1,22 @@
+<div id="print-section" class="p-2"> 
+    <mat-card>
+        <div *ngIf="user$ | async as user" class="container text-center" style="width:50% ;">
+            <mat-card-title>Id: {{user.userId}}</mat-card-title>
+            <mat-card-content>
+                <h3>Nombre: {{user.userName}}</h3>
+                <h3>Apellidos: {{user.userLastName}}</h3>
+                <h3>Dirección: {{user.userAdress}}</h3>
+                <h3>Tipo usuario: {{user.typeOfUserName}}</h3>
+                <h3>Telefono: {{user.userTelephone}}</h3>
+                <h3>Correo electrónico: {{user.userEmail}}</h3>   
+                <h3>Contraseña: {{user.password}}</h3>              
+            </mat-card-content>  
+                      
+        </div>
+      </mat-card>
+      <mat-card-actions>
+        <button printSectionId="print-section" ngxPrint mat-raised-button class="me-2">Print</button>
+        <button routerLink="/Usuarios" mat-raised-button class="float-end">Back</button>
+    </mat-card-actions>   
+    </div>
+  

@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+/* regular style toast*/
+@import 'ngx-toastr/toastr';
+
+/*bootstrap style toast
+// or import a bootstrap 4 alert styled design (SASS ONLY)
+// should be after your bootstrap imports, it uses bs4 variables, mixins, functions
+@import 'ngx-toastr/toastr-bs4-alert';*/
+
+/*if you'd like to use it without importing all of bootstrap it requires
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+/* bootstrap 4
+@import 'ngx-toastr/toastr-bs4-alert';
+/* boostrap 5
+@import 'ngx-toastr/toastr-bs5-alert';*/
+h1{
+    color:blue;  
+    line-height: 80px; 
+}
+body{
+    
+      background-image: -webkit-image-set('https://th.bing.com/th/id/OIP.F3WlqrkOnWlWwESpuIAqgwHaEo?pid=ImgDet&rs=1');
+}
+html, body { height: 100%; }
+body { background-color:whitesmoke; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
