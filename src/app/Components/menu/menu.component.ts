@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class MenuComponent {
 enabled!:false;
+@Input() opcion!: string;
+textoPadre!: string;
+
+ngOnInit(){
+  textoPadre: 'Log In'
+}
 }

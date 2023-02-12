@@ -31,16 +31,18 @@ import { AdduserComponent } from './Components/adduser/adduser.component';
 import { LoginComponent } from './Components/login/login.component';
 import { UsuariosComponent } from './Components/usuarios/usuarios.component';
 import { DetalleUsuariosComponent } from './Components/detalle-usuarios/detalle-usuarios.component';
+import { HomeComponent } from './Components/home/home.component';
 
 const routes :Routes = [
-  {path:'', redirectTo: 'Login', pathMatch: 'full'},
+  {path:'', redirectTo: 'Home', pathMatch: 'full'},
+  {path:'Home', component: HomeComponent},
   {path: 'getUsuario/:id', component:DetalleUsuariosComponent}, 
   {path:'Usuarios', component: UsuariosComponent},
   {path:'AddUsers', component : AdduserComponent },
   {path:'editUser/:id', component : AdduserComponent},
   {path:'Login', component: LoginComponent},
   {path:'Menu', component: MenuComponent},
-  {path:'**', redirectTo: 'Login', pathMatch: 'full'}
+  {path:'**', redirectTo: 'Home', pathMatch: 'full'}
 ]
 
 
@@ -51,7 +53,8 @@ const routes :Routes = [
     AdduserComponent,
     LoginComponent, 
     UsuariosComponent,
-    DetalleUsuariosComponent
+    DetalleUsuariosComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

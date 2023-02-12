@@ -1,5 +1,5 @@
 import { ExpressionType } from '@angular/compiler';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/service/usuario.service';
@@ -13,13 +13,16 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 export class LoginComponent {
   userName!: string;
   password!: string;
+  
+  @Output() opcion: EventEmitter<string> = new EventEmitter();
+ 
   loginForm = new FormGroup({
-    userName: new FormControl("",[Validators.required,
+    userName: new FormControl("", [Validators.required,
     Validators.minLength(5),
     Validators.maxLength(50)]),
-    password: new FormControl("",[Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(20)])
+    password: new FormControl("", [Validators.required,
+    Validators.minLength(3),
+    Validators.maxLength(20)])
   });
 
   isuservalid!: boolean;
@@ -32,7 +35,9 @@ export class LoginComponent {
   get Pass(): FormControl {
     return this.loginForm.get('password') as FormControl
   }
-
+  enviar() {
+     this.opcion.emit('Log In');
+  }
   login() {
     this.userservice.loginUser([this.loginForm.value.userName,
     this.loginForm.value.password])
@@ -49,12 +54,14 @@ export class LoginComponent {
         }
         else {
           this.isuservalid = true;
+          this.enviar();
           alert('Welcome Admin ' + this.loginForm.value.userName);
           this.router.navigate(['/Usuarios']);
         }
         // this.loginForm.value.user = localStorage.setItem();
-console.log(this.loginForm.value.userName)
+        console.log(this.loginForm.value.userName)
       })
+
 
     console.log(this.loginForm);
 

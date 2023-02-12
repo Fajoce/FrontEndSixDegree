@@ -1,21 +1,20 @@
 <div class="container text-center bg-primary display-2">
 
-  <button mat-button [matMenuTriggerFor]="aboveMenu">
+  <button mat-button [matMenuTriggerFor]="beforeMenu">
     <mat-icon>home</mat-icon>Home</button>
-  <mat-menu #aboveMenu="matMenu" yPosition="below">
-      <button mat-menu-item routerLink='/'>List</button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button mat-menu-item routerLink='/Home'>Quienes somos</button>
   </mat-menu>
   
 <button mat-button [matMenuTriggerFor]="beforeMenu" *ngIf="enabled">Usuarios</button>
 <mat-menu #beforeMenu="matMenu" xPosition="before">
-  <button mat-menu-item routerLink='/Usuarios'>List</button>
+  <button mat-menu-item routerLink=''>List</button>
+  
 </mat-menu>
-<mat-icon>login
 
-</mat-icon>
 <button mat-button [matMenuTriggerFor]="aboveMenu">
-  Login</button>
+  <mat-icon>close</mat-icon>Log Out</button>
 <mat-menu #aboveMenu="matMenu" yPosition="below">
-    <button mat-menu-item routerLink='/Login'>List</button>
+  <button mat-menu-item routerLink='/Login'>Log Out</button>
 </mat-menu>
 </div>
