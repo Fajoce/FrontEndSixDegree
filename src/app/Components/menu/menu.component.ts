@@ -9,8 +9,10 @@ export class MenuComponent {
 enabled!:true;
 @Input() opcion!: string;
 textoPadre!: string;
-
+constructor(){
+  this.textoPadre = 'Admin';
+}
 ngOnInit(){
-  textoPadre: 'Log In'
+
 }
 }

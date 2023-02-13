@@ -13,8 +13,14 @@
 </mat-menu>
 
 <button mat-button [matMenuTriggerFor]="aboveMenu">
-  <mat-icon>close</mat-icon>Log Out</button>
+  <mat-icon>power_off</mat-icon>Log Out</button>
 <mat-menu #aboveMenu="matMenu" yPosition="below">
   <button mat-menu-item routerLink='/Login'>Log Out</button>
 </mat-menu>
 </div>
+<div  class="text-center">
+  <p>
+    <mat-icon>group</mat-icon> Ud esta en el sistema como:{{textoPadre}}
+  </p>
+</div>
+

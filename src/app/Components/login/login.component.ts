@@ -27,7 +27,7 @@ export class LoginComponent {
     Validators.maxLength(50)]),
     password: new FormControl("", [Validators.required,
     Validators.minLength(3),
-    Validators.maxLength(20)])
+    Validators.maxLength(10)])
   });
 
   isuservalid!: boolean;
@@ -51,9 +51,11 @@ export class LoginComponent {
   get Pass(): FormControl {
     return this.loginForm.get('password') as FormControl
   }
+
   enviar() {
-    this.opcion.emit('Log In');
+    this.opcion.emit(this.userName);
   }
+
   login() {
     this.userservice.loginUser([this.loginForm.value.userName,
     this.loginForm.value.password])
@@ -61,13 +63,13 @@ export class LoginComponent {
         if (res == 'Failure') {
           this.isuservalid = false;
           alert('Invalid User');
+          this.router.navigate(['/Login']);
         }
         else if (res == 'Success') {
           this.isuservalid = true;
-          alert('Welcome' + this.loginForm.value.userName);
+          alert('Welcome ' + this.loginForm.value.userName);
           this.getUserByName();
           this.router.navigate(['/getUsuarios/'+ this.loginForm.value.userName]);
-         // console.log(this.router.navigate(['/GetUsuario/'+ this.loginForm.value.userName]))
         }
         else {
           this.isuservalid = true;
