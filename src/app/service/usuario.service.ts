@@ -19,6 +19,11 @@ export class UsuarioService {
   getUsersById(id:number):Observable<Usuarios>{
     return this.httpclient.get<Usuarios>(this.url+'/users/'+id);
   }
+
+    //Get users By name
+    getUsersName(name:string):Observable<Usuarios>{
+      return this.httpclient.get<Usuarios>(this.url+'/users/name/'+name);
+    }
   //create users
   addUsers(data:any){
     return this.httpclient.post(this.url+'/users',data);

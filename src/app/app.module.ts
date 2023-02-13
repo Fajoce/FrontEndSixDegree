@@ -32,11 +32,14 @@ import { LoginComponent } from './Components/login/login.component';
 import { UsuariosComponent } from './Components/usuarios/usuarios.component';
 import { DetalleUsuariosComponent } from './Components/detalle-usuarios/detalle-usuarios.component';
 import { HomeComponent } from './Components/home/home.component';
+import { DetalleUsuariosLimitadoComponent } from './Components/detalle-usuarios-limitado/detalle-usuarios-limitado.component';
+import { DeclarationListEmitMode } from '@angular/compiler';
 
 const routes :Routes = [
   {path:'', redirectTo: 'Login', pathMatch: 'full'},
   {path:'Home', component: HomeComponent},
-  {path: 'getUsuario/:id', component:DetalleUsuariosComponent}, 
+  {path: 'getUsuario/:id', component:DetalleUsuariosComponent},
+  {path: 'getUsuarios/:name', component:DetalleUsuariosLimitadoComponent},  
   {path:'Usuarios', component: UsuariosComponent},
   {path:'AddUsers', component : AdduserComponent },
   {path:'editUser/:id', component : AdduserComponent},
@@ -54,7 +57,8 @@ const routes :Routes = [
     LoginComponent, 
     UsuariosComponent,
     DetalleUsuariosComponent,
-    HomeComponent
+    HomeComponent,
+    DetalleUsuariosLimitadoComponent
   ],
   imports: [
     BrowserModule,

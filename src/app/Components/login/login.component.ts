@@ -1,7 +1,9 @@
 import { ExpressionType } from '@angular/compiler';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Usuarios } from 'src/app/Models/usuarios';
 import { UsuarioService } from 'src/app/service/usuario.service';
 
 
@@ -11,11 +13,14 @@ import { UsuarioService } from 'src/app/service/usuario.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  name!: string;
+  user!: Usuarios;
+  user$! :Observable<Usuarios>;
   userName!: string;
   password!: string;
-  
   @Output() opcion: EventEmitter<string> = new EventEmitter();
- 
+
+
   loginForm = new FormGroup({
     userName: new FormControl("", [Validators.required,
     Validators.minLength(5),
@@ -27,7 +32,18 @@ export class LoginComponent {
 
   isuservalid!: boolean;
 
-  constructor(private router: Router, private userservice: UsuarioService) { }
+  constructor(private router: Router, 
+    private userservice: UsuarioService,
+    private activatedRoute: ActivatedRoute) {
+      this.name = String(this.activatedRoute.snapshot.paramMap.get('name'));
+     }
+
+     ngOnInit(){
+      this.getUserByName();
+     }
+     getUserByName(){
+      this.user$ = this.userservice.getUsersName(this.name);
+     }
   get User(): FormControl {
     return this.loginForm.get('userName') as FormControl
   }
@@ -36,7 +52,7 @@ export class LoginComponent {
     return this.loginForm.get('password') as FormControl
   }
   enviar() {
-     this.opcion.emit('Log In');
+    this.opcion.emit('Log In');
   }
   login() {
     this.userservice.loginUser([this.loginForm.value.userName,
@@ -44,13 +60,14 @@ export class LoginComponent {
       .subscribe(res => {
         if (res == 'Failure') {
           this.isuservalid = false;
-
           alert('Invalid User');
         }
         else if (res == 'Success') {
           this.isuservalid = true;
           alert('Welcome' + this.loginForm.value.userName);
-          this.router.navigate(['/AddOrders']);
+          this.getUserByName();
+          this.router.navigate(['/getUsuarios/'+ this.loginForm.value.userName]);
+         // console.log(this.router.navigate(['/GetUsuario/'+ this.loginForm.value.userName]))
         }
         else {
           this.isuservalid = true;
