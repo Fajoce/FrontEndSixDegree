@@ -12,7 +12,7 @@ const users: Usuarios[] = [];
   styleUrls: ['./usuarios.component.css']
 })
 export class UsuariosComponent {
-  displayedColumns: string[] = ['userId', 'userName','userLastName','acciones'];
+  displayedColumns: string[] = ['userId', 'userName','userAdress','acciones'];
   dataSource = new MatTableDataSource<Usuarios>(users);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

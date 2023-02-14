@@ -77,12 +77,8 @@ export class LoginComponent {
           alert('Welcome Admin ' + this.loginForm.value.userName);
           this.router.navigate(['/Usuarios']);
         }
-        // this.loginForm.value.user = localStorage.setItem();
         console.log(this.loginForm.value.userName)
       })
-
-
     console.log(this.loginForm);
-
   }
 }

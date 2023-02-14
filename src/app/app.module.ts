@@ -33,6 +33,7 @@ import { UsuariosComponent } from './Components/usuarios/usuarios.component';
 import { DetalleUsuariosComponent } from './Components/detalle-usuarios/detalle-usuarios.component';
 import { HomeComponent } from './Components/home/home.component';
 import { DetalleUsuariosLimitadoComponent } from './Components/detalle-usuarios-limitado/detalle-usuarios-limitado.component';
+import { UsuarioGuard } from './Gurads/usuario.guard';
 
 const routes :Routes = [
   {path:'', redirectTo: 'Login', pathMatch: 'full'},

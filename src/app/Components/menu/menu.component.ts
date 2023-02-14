@@ -13,6 +13,5 @@ constructor(){
   this.textoPadre = 'Admin';
 }
 ngOnInit(){
-
 }
 }
